@@ -58,18 +58,21 @@ function checkBox() {
   }
 }
 
+function toggoleRemoveButton(i) {
+  document.getElementById(`delete${i}`).classList.toggle('fa-ellipsis-v');
+  document.getElementById(`delete${i}`).classList.toggle('fa-trash');
+}
+
 function clickSpan() {
   const description = document.querySelectorAll('.description');
   const deleteButton = document.querySelectorAll('.deleteButton');
   if (description !== null) {
     for (let i = 0; i < description.length; i += 1) {
       description[i].addEventListener('focus', () => {
-        document.getElementById(`delete${i}`).classList.remove('fa-ellipsis-v');
-        document.getElementById(`delete${i}`).classList.add('fa-trash');
+        toggoleRemoveButton(i);
       });
       description[i].addEventListener('blur', () => {
-        document.getElementById(`delete${i}`).classList.add('fa-ellipsis-v');
-        document.getElementById(`delete${i}`).classList.remove('fa-trash');
+        toggoleRemoveButton(i);
       });
       description[i].addEventListener('input', () => {
         editTask(description[i]);
